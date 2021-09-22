@@ -7,14 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import AppRouter from "./components/Router/AppRouter";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'styles.scss';
-
-/*ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);*/
+import './style.css';
+// import './styles.scss';
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
 

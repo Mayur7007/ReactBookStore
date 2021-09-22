@@ -41,7 +41,7 @@ const BookForm = (props) => {
     };
 
     const handleInputChange = (event) => {
-        const [name , value] = event.target;
+        const { name, value } = event.target;
 
         switch (name) {
             case 'quantity':
