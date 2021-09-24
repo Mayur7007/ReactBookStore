@@ -1,10 +1,12 @@
 import React from "react";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import Header from "../Header/Header";
 import AddBook from "../Books/AddBook";
 import BooksList from "../Books/BooksList";
+import EditBook from "../Books/EditBook";
+import BooksContext from "../../context/BooksContext";
 
 import useLocalStorage from "../../hooks/useLocalStorage";
 
@@ -16,21 +18,15 @@ const AppRouter = () => {
             <div>
                 <Header />
                 <div className="main-content">
-                    <Switch>
-                        <Route
-                            render={(props) => (
-                                <BooksList {...props} books={books} setBooks={setBooks} />
-                            )}
-                            path="/"
-                            exact={true}
-                        />
-                        <Route
-                            render={(props) => (
-                                <AddBook {...props} books={books} setBooks={setBooks} />
-                            )}
-                            path="/add"
-                        />
-                    </Switch>
+                    <BooksContext.Provider value={{ books, setBooks }}>
+                        <Switch>
+                            <Route component={BooksList} path="/" exact={true} />
+                            <Route component={AddBook} path="/add" />
+                            <Route component={EditBook} path="/edit/:id" />
+                            <Route component={() => <Redirect to="/" />} />
+                        </Switch>
+                    </BooksContext.Provider>
+
                 </div>
             </div>
         </BrowserRouter>

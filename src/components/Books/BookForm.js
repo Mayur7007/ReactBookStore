@@ -4,11 +4,14 @@ import {v4 as uuidV4 } from 'uuid';
 
 const BookForm = (props) => {
 
-    const [ book, setBook ] = useState({
-        bookName: props.book ? props.book.bookName : '',
-        author: props.book ? props.book.author : '',
-        quantity: props.book ? props.book.quantity : '',
-        price: props.book ? props.book.price : '',
+    const [book, setBook] = useState(() => {
+        return {
+            bookName: props.book ? props.book.bookName : '',
+            author: props.book ? props.book.author : '',
+            quantity: props.book ? props.book.quantity : '',
+            price: props.book ? props.book.price : '',
+            date: props.book ? props.book.date : ''
+        };
     });
 
     const [errorMessage, setErrorMessage]       = useState('');
